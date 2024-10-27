@@ -1,0 +1,37 @@
+﻿<Page x:Class="GermogenovSubscriptions.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GermogenovSubscriptions"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600"
+      Title="MainPage">
+
+    <Grid Margin="10">
+        <!-- Список подписок -->
+        <TextBlock Text="Subscription Tracker" FontSize="22" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" HorizontalAlignment="Center" Margin="0,10,0,20"/>
+
+        <ListView x:Name="SubscriptionListView" ItemsSource="{Binding Subscriptions}" SelectedItem="{Binding SelectedSubscription, Mode=TwoWay}" Margin="0,60,0,60" 
+      Background="{StaticResource HeaderBackgroundColor}" BorderThickness="0"
+      ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Service" DisplayMemberBinding="{Binding ServiceName}" 
+                        Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListView}, Converter={StaticResource ColumnWidthConverter}, ConverterParameter=5}"/>
+                    <GridViewColumn Header="Next Payment" DisplayMemberBinding="{Binding NextPaymentDate}" 
+                        Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListView}, Converter={StaticResource ColumnWidthConverter}, ConverterParameter=5}"/>
+                    <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding MonthlyCost}" 
+                        Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListView}, Converter={StaticResource ColumnWidthConverter}, ConverterParameter=5}"/>
+                    <GridViewColumn Header="Payment Method" DisplayMemberBinding="{Binding PaymentMethod}" 
+                        Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListView}, Converter={StaticResource ColumnWidthConverter}, ConverterParameter=5}"/>
+                    <GridViewColumn Header="Plan" DisplayMemberBinding="{Binding Plan}" 
+                        Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListView}, Converter={StaticResource ColumnWidthConverter}, ConverterParameter=5}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Кнопка для редактирования подписки -->
+        <Button Content="Edit Subscription" Style="{StaticResource FlatButtonStyle}" Width="200" Height="30" Margin="0,0,0,15" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="EditSubscription_Click"/>
+    </Grid>
+</Page>

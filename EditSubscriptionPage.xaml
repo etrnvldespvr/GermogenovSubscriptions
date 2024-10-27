@@ -1,0 +1,27 @@
+﻿<Page x:Class="GermogenovSubscriptions.EditSubscriptionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GermogenovSubscriptions"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600"
+      Title="EditSubscriptionPage">
+
+    <Grid Margin="10">
+        <TextBlock Text="Edit Subscription" FontSize="22" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" HorizontalAlignment="Center" Margin="0,10,0,20"/>
+
+        <StackPanel Margin="0,60,0,80">
+            <TextBlock Text="Payment Method" FontWeight="Bold"/>
+            <ComboBox x:Name="PaymentMethodComboBox" ItemsSource="{Binding PaymentMethods}" SelectedItem="{Binding SelectedSubscription.PaymentMethod, Mode=TwoWay}" Margin="0,0,0,10" SelectionChanged="PaymentMethodComboBox_SelectionChanged"/>
+
+            <TextBlock Text="Plan" FontWeight="Bold" 
+       Visibility="{Binding SelectedSubscription.IsPlanAvailable, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <ComboBox x:Name="PlanComboBox" ItemsSource="{Binding SubscriptionPlans}" SelectedItem="{Binding SelectedSubscription.Plan, Mode=TwoWay}" Visibility="{Binding SelectedSubscription.IsPlanAvailable, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="0,0,0,10" SelectionChanged="PlanComboBox_SelectionChanged"/>
+
+
+            <Button Content="Delete Subscription" Style="{StaticResource FlatButtonStyle}" Width="200" HorizontalAlignment="Center" Click="DeleteSubscription_Click"/>
+            <Button Content="Back" Style="{StaticResource FlatButtonStyle}" Width="200" HorizontalAlignment="Center" Margin="0,10,0,0" Click="BackButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
