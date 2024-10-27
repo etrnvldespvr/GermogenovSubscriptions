@@ -6,5 +6,7 @@
         xmlns:local="clr-namespace:GermogenovSubscriptions"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="600">
-    <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
+    <Grid>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
+    </Grid>
 </Window>

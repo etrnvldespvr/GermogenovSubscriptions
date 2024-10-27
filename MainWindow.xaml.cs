@@ -33,9 +33,9 @@ namespace GermogenovSubscriptions
             // Пример данных
             Subscriptions = new ObservableCollection<Subscription>
             {
-                new Subscription { ServiceName = "Spotify", NextPaymentDate = "1 ноября 2024", MonthlyCost = "9.99", PaymentMethod = "Карта", Plan = "Базовый", IsPlanAvailable = true },
-                new Subscription { ServiceName = "Yandex Plus", NextPaymentDate = "1 ноября 2024", MonthlyCost = "9.99", PaymentMethod = "Карта", Plan = "Базовый", IsPlanAvailable = false },
-                new Subscription { ServiceName = "PlayStation Plus", NextPaymentDate = "1 ноября 2024", MonthlyCost = "12.99", PaymentMethod = "Карта", Plan = "Базовый", IsPlanAvailable = true }
+                new Subscription { ServiceName = "Spotify", NextPaymentDate = "01.11.2024 00:00:00", MonthlyCost = "5 долл.", PaymentMethod = "Карта", Plan = "Базовый", IsPlanAvailable = true },
+                new Subscription { ServiceName = "Yandex Plus", NextPaymentDate = "01.11.2024 00:00:00", MonthlyCost = "399 руб.", PaymentMethod = "Карта", Plan = "Базовый", IsPlanAvailable = false },
+                new Subscription { ServiceName = "Dota Plus", NextPaymentDate = "01.11.2024 00:00:00", MonthlyCost = "389 руб.", PaymentMethod = "Карта", Plan = "", IsPlanAvailable = true }
             };
 
             MainFrame.Navigate(new MainPage(this));
@@ -90,6 +90,6 @@ namespace GermogenovSubscriptions
         public void NavigateToEditPage(Subscription subscription)
         {
             MainFrame.Navigate(new EditSubscriptionPage(this, subscription));
-        }
+        }        
     }
 }
