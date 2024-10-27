@@ -90,6 +90,39 @@ namespace GermogenovSubscriptions
         public void NavigateToEditPage(Subscription subscription)
         {
             MainFrame.Navigate(new EditSubscriptionPage(this, subscription));
-        }        
+        }
+        private void SimulateRenewalDate_Click(object sender, RoutedEventArgs e)
+        {
+            // Получаем текущую дату для проверки истекших подписок
+            var currentDate = "01.11.2024 00:00:00";
+
+            foreach (var subscription in Subscriptions)
+            {
+                // Проверяем, истекла ли подписка на сегодняшний день
+                if (subscription.NextPaymentDate == currentDate)
+                {
+                    // Показываем уведомление для каждой истекшей подписки
+                    var result = MessageBox.Show(
+                        $"Ваша подписка на {subscription.ServiceName} закончилась. Желаете продлить?",
+                        "Продление подписки",
+                        MessageBoxButton.YesNo);
+
+                    // Если пользователь выбирает "Да", обновляем дату и оставляем стоимость
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        // Устанавливаем новую дату на следующий месяц
+                        subscription.NextPaymentDate = DateTime.Now.Date.AddMonths(1).ToString();
+                    }
+                    else
+                    {
+                        // Если "Нет", отменяем подписку
+                        subscription.CancelSubscription();
+                    }
+                }
+            }
+
+            // Обновляем представление для отображения изменений
+            MainFrame.Navigate(new MainPage(this));
+        }
     }
 }
