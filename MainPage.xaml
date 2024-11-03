@@ -12,7 +12,7 @@
         <!-- Список подписок -->
         <TextBlock Text="Subscription Tracker" FontSize="22" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" HorizontalAlignment="Center" Margin="0,10,0,20"/>
 
-        <ListView x:Name="SubscriptionListView" ItemsSource="{Binding Subscriptions}" SelectedItem="{Binding SelectedSubscription, Mode=TwoWay}" Margin="0,60,0,90" 
+        <ListView x:Name="SubscriptionListView" ItemsSource="{Binding Subscriptions}" SelectedItem="{Binding SelectedSubscription, Mode=TwoWay}" Margin="0,60,0,60" 
       Background="{StaticResource HeaderBackgroundColor}" BorderThickness="0"
       ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.View>
@@ -32,6 +32,6 @@
         </ListView>
 
         <!-- Кнопка для редактирования подписки -->
-        <Button Content="Edit Subscription" Style="{StaticResource FlatButtonStyle}" Width="200" Height="30" Margin="0,0,0,50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="EditSubscription_Click"/>
+        <Button Content="Edit Subscription" Style="{StaticResource FlatButtonStyle}" Width="200" Height="30" Margin="0,0,0,15" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="EditSubscription_Click"/>
     </Grid>
 </Page>
